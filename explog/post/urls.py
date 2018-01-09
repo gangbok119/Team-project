@@ -7,8 +7,8 @@ from .apis import PostListAPIView,PostDetailAPIView, PostReplyListAPIView,PostRe
 urlpatterns = [
 
     url(r'^$', PostListAPIView.as_view(), name='post_list'),
-    url(r'(?P<category>\d+)/list/$',PostCategoryListAPIView.as_view(),name='post_category_list'),
-    url(r'search/$',PostSearchAPIView.as_view(),name='post_search'),
+    url(r'^(?P<category>\d+)/list/$',PostCategoryListAPIView.as_view(),name='post_category_list'),
+    url(r'^search/$',PostSearchAPIView.as_view(),name='post_search'),
     url(r'^create/',PostCreateAPIView.as_view(),name='post_create'),
     url(r'^(?P<post_pk>\d+)/$',PostDetailAPIView.as_view(), name='post_detail'),
     url(r'^(?P<post_pk>\d+)/update/$', PostDeleteUpdateAPIView.as_view(), name='post_update'),

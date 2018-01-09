@@ -174,7 +174,7 @@ class PostPath(models.Model):
     # 위도경도 - 데이터 타입이 실수
     lat = models.FloatField()
     lng = models.FloatField()
-
+    created_at = models.DateTimeField(auto_now_add=True)
     post_content = models.ForeignKey(PostContent, on_delete=models.CASCADE, related_name='path')
 
     def __unicode__(self):

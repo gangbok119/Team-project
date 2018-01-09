@@ -43,6 +43,7 @@ class PostPhotoSerializer(serializers.ModelSerializer):
 
 
 class PostPhotoListSerializer(serializers.ModelSerializer):
+    photo = serializers.SerializerMethodField()
     class Meta:
         model = PostPhoto
         fields = (
@@ -51,7 +52,9 @@ class PostPhotoListSerializer(serializers.ModelSerializer):
             'created_at',
             'post_content',
         )
-
+    def get_photo(self,obj):
+        s=obj.photo.url
+        return s.split('?')[0]
 
 class PostPathCreateSerializer(serializers.Serializer):
     pk = serializers.IntegerField()
@@ -94,5 +97,6 @@ class PostPathListSerializer(serializers.ModelSerializer):
             'pk',
             'lat',
             'lng',
+            'created_at',
             'post_content',
         )
